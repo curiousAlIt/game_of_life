@@ -5,4 +5,7 @@
 from world import World
 
 aw = World(3,6)
-iw = World(2,5)
+iw = World(150,250)
+
+iw.set_to_random(0.005)
+iw.display_world()
