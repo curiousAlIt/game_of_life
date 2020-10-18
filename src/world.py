@@ -65,3 +65,44 @@ class World(object):
         # next row
 
         return
+
+
+    def number_of_living_neighbors(self):
+
+        A = np.zeros([self.height, self.width], int)
+
+        for r in range (0, self.height):
+            for c in range (0, self.width):
+
+                if (r==0) and (c==0):
+                    A[r, c] = self.S[r, c+1] + self.S[r+1, c+1] + self.S[r+1, c]
+
+                elif (r==0) and (c < self.width-1):
+                    A[r, c] = self.S[r, c-1] + self.S[r+1, c-1] + self.S[r, c+1] + self.S[r+1, c+1] + self.S[r+1, c]
+
+                elif r==0 and c==self.width-1:
+                    A[r, c] = self.S[r, c-1] + self.S[r+1, c-1] + self.S[r+1, c]
+
+                elif r < self.height-1 and c==0:
+                    A[r, c] = self.S[r-1, c] + self.S[r-1, c+1] + self.S[r, c+1] + self.S[r+1, c+1] + self.S[r+1, c]
+
+                elif r < self.height-1 and c < self.width - 1:
+                    A[r, c] = self.S[r-1, c] + self.S[r-1, c+1] + self.S[r, c+1] + self.S[r+1, c+1] + self.S[r+1, c] + self.S[r+1, c-1] + self.S[r, c-1] + self.S[r-1, c-1]
+
+                elif r < self.height-1 and c == self.width-1:
+                    A[r, c] = self.S[r-1, c] + self.S[r+1, c] + self.S[r+1, c-1] + self.S[r, c-1] + self.S[r-1, c-1]
+
+                elif r == self.height-1 and c==0:
+                    A[r, c] = self.S[r-1, c] + self.S[r-1, c+1] + self.S[r, c+1]
+
+                elif r==self.height-1 and c < self.width-1:
+                    A[r, c] = self.S[r-1, c] + self.S[r-1, c+1] + self.S[r, c+1] + self.S[r, c-1] + self.S[r-1, c-1]
+
+                elif r == self.height-1 and c == self.width-1:
+                    A[r, c] = self.S[r-1, c] + self.S[r, c-1] + self.S[r-1, c-1]
+
+            # next column
+        # next row
+
+        return A
+        

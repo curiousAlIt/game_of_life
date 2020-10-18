@@ -9,3 +9,6 @@ iw = World(150,250)
 
 iw.set_to_random(0.005)
 iw.display_world()
+
+nln_aw = aw.number_of_living_neighbors()
+print(nln_aw)
